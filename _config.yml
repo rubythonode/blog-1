@@ -73,6 +73,6 @@ theme: tranquil
 ## Docs: http://hexo.io/docs/deployment.html
 deploy:
   type: git
-  repo: https://github.com/Lattecom/blog.git
+  repo: https://lattecom:tlskahs1@github.com/Lattecom/blog.git
   branch: gh-pages
 
