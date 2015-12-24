@@ -75,3 +75,9 @@ deploy:
   type: git
   repo: https://github.com/Lattecom/blog.git
   branch: gh-pages
+
+# Feed
+feed:
+  type: atom
+  path: atom.xml
+  limit: 20

@@ -14,7 +14,6 @@ tags:
 
 - OS이미지를 SD카드에 옮겨 설치
 - NOOBS를 이용하여 설치
-
 NOOBS는 라즈베리파이를 위한 OS를 손쉽게 설치할 수 있도록 도와주는 툴이다. Raspbian, Pidora, OpenElec, OSMC 등 라즈베리파이에 많이 쓰이는 OS들을 간단하게 선택해서 설치할 수 있다. 
 [링크](https://www.raspberrypi.org/downloads/noobs/) 에서 다운받아 이용할 수 있다.
 
