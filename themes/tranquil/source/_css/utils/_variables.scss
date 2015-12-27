@@ -6,21 +6,22 @@ $open-sans:            'Open Sans';
 $open-sans-sans-serif: 'Open Sans', sans-serif;
 $merriweather-serif:   'Merriweather', serif;
 $menlo:                 Menlo;
-
+$noto-sans-kr:          'Noto Sans KR', sans-serif;
+$nanum-gothic-coding:   'Nanum Gothic Coding', monospace;
 $font-family-base: $open-sans-sans-serif;
 
 $font-families: (
    // base
-   'headings':          $open-sans-sans-serif,
+   'headings':          $noto-sans-kr,
    // components
-   'code':              $menlo,
-   'caption':           $merriweather-serif,
-   'image-gallery':     $open-sans,
-   'post-header-cover': $merriweather-serif,
-   'post-meta':         $open-sans-sans-serif,
-   'post-content':      $merriweather-serif,
-   'post-excerpt-link': $open-sans-sans-serif,
-   'highlight':         $menlo,
+   'code':              $nanum-gothic-coding
+   'caption':           $noto-sans-kr,
+   'image-gallery':     $noto-sans-kr,
+   'post-header-cover': $noto-sans-kr,
+   'post-meta':         $noto-sans-kr,
+   'post-content':      $noto-sans-kr,
+   'post-excerpt-link': $noto-sans-kr,
+   'highlight':         $nanum-gothic-coding,
    // layout
    'sidebar':           $open-sans-sans-serif
 );
