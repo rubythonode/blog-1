@@ -33,7 +33,7 @@ tags:
     2.1.1 [Understanding Threads](#2-1-1-Understanding-Threads)
     2.1.2 [Source Files](#2-1-2-Source-Files)
       2.1.2.1 ["devices" code](#2-1-2-1-“devices”-code)
-      2.1.2.2 lib files
+      2.1.2.2 ["lib" files](#2-1-2-2-“lib”-code)
     2.1.3 Synchronization
     2.1.4 Development Suggestions
   2.2 Requirements
@@ -109,3 +109,52 @@ tags:
 "block.h"
   = block device를 위한 추상 레이어, 즉, random-access, 고정된 크기의 블럭의 배열로 구성된 disk-like devices.
 
+#### 2.1.2.2 "lib" files
+마지막으로 "lib" 와 "lib/kernel" 디렉토리에 유용한 라이브러리 루틴들이 있다. ("lib/user"는 프로젝트 2에서 다루는 user programs에서 사용할 것이다. 커널 부분은 아니다.) 여기에 몇 가지 더 자세한 내용은 다음과 같습니다.
+"ctype.h"
+"inttypes.h"
+"limits.h"
+"stdarg.h"
+"stdbool.h"
+"stddef.h"
+"stdint.h"
+"stdio.c"
+"stdio.h"
+"stdlib.c"
+"stdlib.h"
+"string.c"
+"string.h"
+ = C 표준 라이브러리의 일부다. 최근 C 라이브러리의 소개에 대해서 본적이 없다면, 섹션 [C.2 C99](#)를 보면 해당 정보를 알 수 있다.
+ See section [C.3 Unsafe String Functions](#), for information on what's been intentionally left out for safety.
+
+"debug.c"
+"debug.h"
+ = 디버깅을 위한 함수와 매크로. 섹션 [E](#)에 디버깅툴과 좀더 자세한 설명이 있다.
+
+"random.c"
+"random.h"
+ = 의사 난수 생성기(Pseudo-random number generator).
+ The actual sequence of random values will not vary from one Pintos run to another, unless you do one of three things: specify a new random seed value on the -rs kernel command-line option on each run, or use a simulator other than Bochs, or specify the -r option to pintos.
+
+round.h
+ = 라운딩 매크로.
+
+"syscall-nr.h"
+ = 시스템 콜 넘버. 프로젝트 2까지 사용하지 않는다.
+
+"kernel/list.c"
+"kernel/list.h"
+ = Doubly linked list 구현. Pintos 코드 전반에 걸쳐 사용한다. 당신은 아마 프로젝트 1 곳곳에서 사용하게 될 것이다.
+
+"kernel/bitmap.c"
+"kernel/bitmap.h"
+ = Bitmap 구현. 당신이 원한다면 당신의 코드에 사용할 수 있다. 하지만 아마 프로젝트 1에서 사용하지 않을 것이다.
+
+"kernel/hash.c"
+"kernel/hash.h"
+ = Hash table 구현. 프로젝트 3에서 유용하게 쓸 것이다.
+
+"kernel/console.c"
+"kernel/console.h"
+"kernel/stdio.h"
+ = `printf()`와 몇몇 함수의 구현.
