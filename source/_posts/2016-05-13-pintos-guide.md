@@ -33,7 +33,7 @@ tags:
     2.1.1 [Understanding Threads](#2-1-1-Understanding-Threads)
     2.1.2 [Source Files](#2-1-2-Source-Files)
       2.1.2.1 ["devices" code](#2-1-2-1-“devices”-code)
-      2.1.2.2 ["lib" files](#2-1-2-2-“lib”-code)
+      2.1.2.2 ["lib" files](#2-1-2-2-“lib”-files)
     2.1.3 Synchronization
     2.1.4 Development Suggestions
   2.2 Requirements
@@ -50,7 +50,7 @@ tags:
 ## 1. Introduction
 ### 1.1 Getting Started
 #### 1.1.1 Source Tree Overview
-이제 다음 명령어를 실행해서 "pintos/src"라는 이름의 디렉토리에 Pintos source를 추출할 수 있다.`zcat /usr/class/cs140/pintos/pintos.tar.gz | tar x` 또는, http://www.stanford. edu/class/cs140/projects/pintos/pintos.tar.gz 에서 내려 받고 비슷한 방법으로 추출할 수 있다.
+이제 다음 명령어를 실행해서 "pintos/src"라는 이름의 디렉토리에 Pintos source를 추출할 수 있다.`zcat /usr/class/cs140/pintos/pintos.tar.gz | tar x` 또는, http://www.stanford.edu/class/cs140/projects/pintos/pintos.tar.gz 에서 내려 받고 비슷한 방법으로 추출할 수 있다.
 
 "pintos/src"
 
@@ -111,6 +111,7 @@ tags:
 
 #### 2.1.2.2 "lib" files
 마지막으로 "lib" 와 "lib/kernel" 디렉토리에 유용한 라이브러리 루틴들이 있다. ("lib/user"는 프로젝트 2에서 다루는 user programs에서 사용할 것이다. 커널 부분은 아니다.) 여기에 몇 가지 더 자세한 내용은 다음과 같습니다.
+
 "ctype.h"
 "inttypes.h"
 "limits.h"
@@ -124,8 +125,7 @@ tags:
 "stdlib.h"
 "string.c"
 "string.h"
- = C 표준 라이브러리의 일부다. 최근 C 라이브러리의 소개에 대해서 본적이 없다면, 섹션 [C.2 C99](#)를 보면 해당 정보를 알 수 있다.
- See section [C.3 Unsafe String Functions](#), for information on what's been intentionally left out for safety.
+ = C 표준 라이브러리의 일부다. 최근 C 라이브러리의 소개에 대해서 본적이 없다면, 섹션 [C.2 C99](#)를 보면 해당 정보를 알 수 있다. See section [C.3 Unsafe String Functions](#), for information on what's been intentionally left out for safety.
 
 "debug.c"
 "debug.h"
