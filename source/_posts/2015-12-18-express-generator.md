@@ -1,8 +1,8 @@
 title: express 모듈로 nodejs app 자동 생성하기
 date: 2015-12-18 00:47:56
 categories:
-- dev
-- nodejs
+- Dev
+- NodeJS
 tags: [express,node,nodejs]
 ---
 nodejs를 공부하던 중 책에서 다음과 같은 명령어로 app을 자동 생성하는 부분을 보았습니다.

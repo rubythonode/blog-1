@@ -1,7 +1,7 @@
 title: Swift를 이용한 iOS 화면 전환
 date: 2016-06-06 00:46:32
 category:
-- dev
+- Dev
 - iOS
 tags:
 - iOS

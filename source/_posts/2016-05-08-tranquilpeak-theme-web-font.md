@@ -1,8 +1,8 @@
 title: Tranquilpeak 테마에 웹 폰트 적용하기
 date: 2016-05-08 20:42:04
 categories:
-- blog
-- hexo
+- Blog
+- Hexo
 tags:
 - hexo
 - theme

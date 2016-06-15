@@ -1,8 +1,8 @@
 title: Pintos Project Guide
 date: 2016-05-13 21:06:06
 category:
-- dev
-- pintos
+- Dev
+- PintOS
 tags:
 - pintos
 ---
@@ -126,7 +126,7 @@ tags:
 "string.c"
 "string.h"
  = C 표준 라이브러리의 일부다. 최근 C 라이브러리의 소개에 대해서 본적이 없다면, 섹션 [C.2 C99](#)를 보면 해당 정보를 알 수 있다. 안전을위해 의도적으로 빠진부분이 무엇인지 알고싶으면 섹션 [C.3 Unsafe String Functions]()을 봐라.
- 
+
 "debug.c"
 "debug.h"
  = 디버깅을 위한 함수와 매크로. 섹션 [E](#)에 디버깅툴과 좀더 자세한 설명이 있다.
