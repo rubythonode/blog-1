@@ -21,3 +21,4 @@ tags:
 - [JPEGmini](http://www.jpegmini.com) : 이미지 경량화 사이트
 - [Modern UI Icons](http://modernuiicons.com) : UI Icon 사이트
 - [나만 알고 싶었던 일러스트 사이트 6](https://m.pikicast.com/contents/?contentsId=210971) : 일러스트 사이트 모음
+- [디자이너가 알아야 할 플랫 디자인 개론](http://slowalk.tistory.com/2389)
