@@ -1,4 +1,4 @@
-title: Pintos Project Guide
+title: "[번역]Pintos Project Guide"
 date: 2016-05-13 21:06:06
 category:
 - Dev
