@@ -1,0 +1,532 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>LatteCom&#39;s Libarary</title>
+  <subtitle>낙서장</subtitle>
+  <link href="/atom.xml" rel="self"/>
+  
+  <link href="http://blog.lattecom.xyz/"/>
+  <updated>2016-08-23T12:44:49.000Z</updated>
+  <id>http://blog.lattecom.xyz/</id>
+  
+  <author>
+    <name>LatteCom</name>
+    
+  </author>
+  
+  <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>맥에서 R(R Studio) Java 환경변수 설정하기</title>
+    <link href="http://blog.lattecom.xyz/2016/07/08/r-java-setting-in-mac/"/>
+    <id>http://blog.lattecom.xyz/2016/07/08/r-java-setting-in-mac/</id>
+    <published>2016-07-08T09:20:11.000Z</published>
+    <updated>2016-08-23T12:44:49.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>macOS에서 R Studio로 통계 패키지를 사용하려는데 두 가지 어려움이 있었습니다. R 시스템 환경변수 설정하는 것과 맥에서 java 버전 문제였습니다.</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;macOS에서 R Studio로 통계 패키지를 사용하려는데 두 가지 어려움이 있었습니다. R 시스템 환경변수 설정하는 것과 맥에서 java 버전 문제였습니다.&lt;/p&gt;
+
+    
+    </summary>
+    
+      <category term="Dev" scheme="http://blog.lattecom.xyz/categories/dev/"/>
+    
+      <category term="R" scheme="http://blog.lattecom.xyz/categories/dev/r/"/>
+    
+    
+      <category term="r" scheme="http://blog.lattecom.xyz/tags/r/"/>
+    
+      <category term="r studio" scheme="http://blog.lattecom.xyz/tags/r-studio/"/>
+    
+      <category term="mac" scheme="http://blog.lattecom.xyz/tags/mac/"/>
+    
+      <category term="java_home" scheme="http://blog.lattecom.xyz/tags/java-home/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>마비노기 단축키, 펫 순서 설정 복원하기</title>
+    <link href="http://blog.lattecom.xyz/2016/07/02/mabinogi-setting/"/>
+    <id>http://blog.lattecom.xyz/2016/07/02/mabinogi-setting/</id>
+    <published>2016-07-02T09:49:54.000Z</published>
+    <updated>2016-08-23T12:44:49.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>컴퓨터를 바꾸거나 PC방 등 다른 컴퓨터에서 마비노기를 하게 되면 기존에 설정해뒀던 단축키 셋팅이나 펫, 파트너 순서 등이 초기화 되버립니다. 특히 피씨방 같은 경우엔 자리도 매번 바뀌고 로컬 파일들이 초기화 되기때문에 매번 다시 설정해줘야해서 불편합니다.</p>
+<p>이번 포스트에선 마비노기 설정파일들을 알아보고 해당 파일을 따로 백업하여 다른 컴퓨터에서 간단하게 복구하는 방법에 대해 알아보겠습니다.</p>
+<a id="more"></a>
+<p>마비노기 설정파일은 내 문서에 mabinogi폴더에 저장되어있습니다. mabinogi폴더엔 아래와 같이 서브 폴더들이 들어있습니다.</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">- 그림대화</div><div class="line">- 내 파일</div><div class="line">- 동물캐릭터 AI</div><div class="line">- 동영상</div><div class="line">- 설정</div><div class="line">- 스크린샷</div><div class="line">- 오류보고</div><div class="line">- 캐시</div></pre></td></tr></table></figure>
+<p>우리가 여기서 필요한 건 ‘설정’ 폴더와 ‘캐시’ 폴더 입니다. ‘설정’ 폴더에는 별도로 저장한 단축키 셋팅 파일이 저장되어있고, ‘캐시’ 폴더에는 펫 순서 저장해둔 파일이 저장되어있습니다. 각 폴더에 들어가면 여러가지 파일들이 많은데 아래 표시된 파일들만 백업하시면 됩니다.</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">|- 설정</div><div class="line">|   |- custom.keyboard  <span class="comment"># 단축키 셋팅 파일</span></div><div class="line">|   |- custom.alarm     <span class="comment"># 알람 셋팅 파일</span></div><div class="line">|- 캐시</div><div class="line">    |- 어쩌구저쩌구.plst</div><div class="line">    |- 어쩌구저쩌구.pnti</div><div class="line">    |- 얼레리꼴레리.bmlt</div></pre></td></tr></table></figure>
+<p>‘설정’폴더의 파일은 ‘custom.keyboard’ 와 ‘custom.alarm’ 으로 모두 동일하여 찾기 쉬우나, ‘캐시’폴더의 파일은 각각 파일명도 다르고 숫자와 영어로 된 복잡한 문자열로 이루어져 있으므로 확장자로 파일을 구분하시면 됩니다.</p>
+<p>위의 파일들을 USB메모리나, 메일, 클라우드 등에 백업 하시고 새로운 컴퓨터의 <code>내 문서/mabinogi/</code> 폴더의 각각 ‘설정’ 폴더와 ‘캐시’ 폴더에 복사하신후 마비노기를 실행하시면 사용하던 단축키와 펫/파트너 순서 등을 그대로 즐기실 수 있습니다.</p>
+<p>p.s. 이 <a href="mabi_setting.zip">첨부파일</a>은 제 설정파일 백업용입니다. 받으셔도 소용없어요! &gt;_&lt;</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;컴퓨터를 바꾸거나 PC방 등 다른 컴퓨터에서 마비노기를 하게 되면 기존에 설정해뒀던 단축키 셋팅이나 펫, 파트너 순서 등이 초기화 되버립니다. 특히 피씨방 같은 경우엔 자리도 매번 바뀌고 로컬 파일들이 초기화 되기때문에 매번 다시 설정해줘야해서 불편합니다.&lt;/p&gt;
+&lt;p&gt;이번 포스트에선 마비노기 설정파일들을 알아보고 해당 파일을 따로 백업하여 다른 컴퓨터에서 간단하게 복구하는 방법에 대해 알아보겠습니다.&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="Game" scheme="http://blog.lattecom.xyz/categories/game/"/>
+    
+      <category term="Mabinogi" scheme="http://blog.lattecom.xyz/categories/game/mabinogi/"/>
+    
+    
+      <category term="mabinogi" scheme="http://blog.lattecom.xyz/tags/mabinogi/"/>
+    
+      <category term="복원" scheme="http://blog.lattecom.xyz/tags/%EB%B3%B5%EC%9B%90/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Github pages와 Hexo를 이용하여 블로그 만들기</title>
+    <link href="http://blog.lattecom.xyz/2016/06/28/hexo-blog-github-pages/"/>
+    <id>http://blog.lattecom.xyz/2016/06/28/hexo-blog-github-pages/</id>
+    <published>2016-06-28T07:38:05.000Z</published>
+    <updated>2016-08-23T12:44:49.000Z</updated>
+    
+    <content type="html"><![CDATA[<p><a href="/2016/02/15/hexo-init/">지난번 포스트</a>에서 Hexo라는 정적블로그 프레임워크에 대해 간략하게 소개했습니다.</p>
+<p>이번엔 hexo와 github의 부가기능인 github-pages를 이용하여 별도의 서버를 두지 않고 github의 repository에 블로그 파일을 올려 블로그를 게시하는 방법에 대해 이야기해보겠습니다.</p>
+<a id="more"></a>
+<h2 id="Hexo-설치"><a href="#Hexo-설치" class="headerlink" title="Hexo 설치"></a>Hexo 설치</h2><p>우선 아래와 같이 npm으로 Hexo 설치 후 blog 디렉토리에 기본파일들을 설치합니다.</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">$ npm install hexo-cli -g</div><div class="line">$ hexo init blog</div><div class="line">$ <span class="built_in">cd</span> blog</div><div class="line">$ npm install</div></pre></td></tr></table></figure>
+<h2 id="Hexo-포스트-작성"><a href="#Hexo-포스트-작성" class="headerlink" title="Hexo 포스트 작성"></a>Hexo 포스트 작성</h2><p>위와 같이 설치후<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">$ hexo new testpost   <span class="comment">#기본 명령어</span></div><div class="line">$ hexo n testpost     <span class="comment">#축약형 명령어  - 둘중에 편하신 명령어로 사용하시면 됩니다.</span></div></pre></td></tr></table></figure></p>
+<p>를 하여 테스트용 새 포스트를 작성해봅니다.</p>
+<p>위 명령어를 실행하면 아래와 같은 디렉토리에 <code>testpost.md</code>라고 마크다운 파일이 생성됩니다.<br><img src="/assets/images/post-tree.png" alt="새 포스트 디렉토리 구조"></p>
+<p>새롭게 생성된 포스트 파일 <code>testpost.md</code>를 텍스트 에디터로 열어보면 다음과 같이 작성되어있습니다.</p>
+<figure class="highlight markdown"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">---</div><div class="line">title: testpost</div><div class="line">date: 2016-06-28 16:20:43</div><div class="line"><span class="section">tags:</span></div><div class="line">---</div></pre></td></tr></table></figure>
+<p>타이틀이 디폴트로 파일명과 똑같이 설정되니 적당히 수정 후 아래의 — 밑에 부터 마크다운 문법에 맞춰 글을 작성하시고 저장해주시면 됩니다.</p>
+<p>글 작성시에 실시간으로 포스팅된 모습을 확인하고 싶을 땐 터미널에서 다음과 같은 명령어를 실행 후<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">$ hexo server  <span class="comment">#기본 명령어</span></div><div class="line">$ hexo s       <span class="comment">#축약형 명령어</span></div></pre></td></tr></table></figure></p>
+<p>웹 브라우저에서 <code>localhost:4000</code>으로 접속하시면 실시간으로 블로그를 확인할 수 있습니다.</p>
+<p>포스트 작성 후 실제 서버에 올라갈 블로그 정적페이지를 생성해주어야 합니다.<br>터미널에서<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">$ hexo generate   <span class="comment">#기본 명령어</span></div><div class="line">$ hexo g          <span class="comment">#축약형 명령어</span></div></pre></td></tr></table></figure></p>
+<p>를 실행하면 <code>blog/public/</code> 디렉토리 아래에 설정된 테마가 적용되어 실제 서버에 올라갈 웹페이지가 생성됩니다.</p>
+<h2 id="Github에-Deploy하기"><a href="#Github에-Deploy하기" class="headerlink" title="Github에 Deploy하기"></a>Github에 Deploy하기</h2><p>포스트 작성후에 외부에서 볼 수 있도록 서버에 발행하여야 합니다. 여기서는 github를 활용한 발행에 대해서 다룹니다.</p>
+<ol>
+<li><p>우선 깃허브에 로그인하여 원하는 repository를 하나 생성해줍니다.<br><img src="/assets/images/github-create-repo.png" alt="깃허브 repository 생성"></p>
+</li>
+<li><p>다음엔 Github에 Deploy해줄 플러그인을 설치합니다.</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ npm install --save hexo-deployer-git</div></pre></td></tr></table></figure>
+</li>
+<li><p>Hexo 설정파일인 <code>_config.yml</code>에 발행정보를 추가해줍니다.<br><code>_config.yml</code>을 열어 ‘URL’ 부분과 ‘Deployment’ 부분 두군데를 수정해줍니다.<br><img src="/assets/images/hexo-config-yml-url.png" alt="Hexo URL Info"> ‘URL’ 부분을 아래와 같이 수정해주고,</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># URL</span></div><div class="line"><span class="comment">## If your site is put in a subdirectory, set url as 'http://yoursite.com/child' and root as '/child/'</span></div><div class="line">url: https://lattecom.github.io/blogtest  <span class="comment"># https://깃허브계정명.github.io/저장소이름</span></div><div class="line">root: /blogtest/      <span class="comment">#/저장소이름/</span></div><div class="line">permalink: :year/:month/:day/:title/</div><div class="line">permalink_defaults:</div></pre></td></tr></table></figure>
+<p><img src="/assets/images/hexo-config-yml-deploy.png" alt="Hexo Deployment Info"> ‘Deployment’ 부분을 다음과 같이 수정해줍니다</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># Deployment</span></div><div class="line"><span class="comment">## Docs: https://hexo.io/docs/deployment.html</span></div><div class="line">deploy:</div><div class="line">  type: git   <span class="comment">#우리는 github에 발행하기를 하고 있으므로 git으로 합니다.</span></div><div class="line">  repo: https://github.com/Lattecom/blogtest.git  <span class="comment">#1번에서 만든 repo의 주소를 넣어주세요.</span></div><div class="line">  branch: gh-pages    <span class="comment">#gh-pages 브랜치로 설정해 줍니다.</span></div></pre></td></tr></table></figure>
+</li>
+<li><p>Github 서버에 파일 올리기.<br>터미널에서 발행 명령어를 실행하여 서버(여기선 Github)에 블로그 파일을 올려줍니다.</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">$ hexo deployment   <span class="comment">#기본 명령어</span></div><div class="line">$ hexo d            <span class="comment">#축약형 명령어</span></div></pre></td></tr></table></figure>
+</li>
+<li><p>Github Pages에 접속하여 블로그 확인.<br>기본 주소로 <code>http://깃허브계정명.github.io/리포이름</code>으로 접속할 수 있습니다.<br>위에서 예제로 만든 블로그는 <a href="https://lattecom.github.io/blogtest" target="_blank" rel="external">https://lattecom.github.io/blogtest</a> 가 주소가 됩니다.</p>
+</li>
+</ol>
+<p>이상으로 Github와 Hexo를 활용하여 블로그 발행하는 방법에 대해 알아보았습니다.</p>
+<hr>
+<h2 id="별첨-Github-Pages에-대하여"><a href="#별첨-Github-Pages에-대하여" class="headerlink" title="별첨. Github Pages에 대하여"></a>별첨. Github Pages에 대하여</h2><p>기본적으로 Github에 있는 Repository는 ‘gh-pages’ 브랜치에 올라간 웹파일들을 <code>http://깃허브계정명.github.io/리포이름</code> 과 같은 주소로 제공해줍니다.</p>
+<p>그 중에 특별하게 Repository 이름을 <code>계정이름.github.io</code>로 만들면 해당 Repo의 ‘master’ 브랜치에 올라간 웹파일들을 뒤에 추가적인 디렉토리 URL이 붙지 않고  <code>https://계정이름.github.io</code>로 제공되어 사용할 수 있습니다.</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;&lt;a href=&quot;/2016/02/15/hexo-init/&quot;&gt;지난번 포스트&lt;/a&gt;에서 Hexo라는 정적블로그 프레임워크에 대해 간략하게 소개했습니다.&lt;/p&gt;
+&lt;p&gt;이번엔 hexo와 github의 부가기능인 github-pages를 이용하여 별도의 서버를 두지 않고 github의 repository에 블로그 파일을 올려 블로그를 게시하는 방법에 대해 이야기해보겠습니다.&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="Blog" scheme="http://blog.lattecom.xyz/categories/blog/"/>
+    
+      <category term="Hexo" scheme="http://blog.lattecom.xyz/categories/blog/hexo/"/>
+    
+    
+      <category term="hexo" scheme="http://blog.lattecom.xyz/tags/hexo/"/>
+    
+      <category term="blog" scheme="http://blog.lattecom.xyz/tags/blog/"/>
+    
+      <category term="github" scheme="http://blog.lattecom.xyz/tags/github/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>참고 링크 ver.디자인</title>
+    <link href="http://blog.lattecom.xyz/2016/06/15/reference-link-design/"/>
+    <id>http://blog.lattecom.xyz/2016/06/15/reference-link-design/</id>
+    <published>2016-06-15T05:41:08.000Z</published>
+    <updated>2016-08-23T12:44:49.000Z</updated>
+    
+    <content type="html"><![CDATA[<ul>
+<li>필요할 때 참고할 만한 사이트 링크를 기록해두는 포스트입니다.</li>
+<li>지속적으로 갱신되는 포스트입니다.</li>
+<li>디자인과 관련된 사이트만 기록합니다.</li>
+</ul>
+<a id="more"></a>
+<hr>
+<h2 id="Site-List"><a href="#Site-List" class="headerlink" title="Site List"></a>Site List</h2><ul>
+<li><a href="http://www.jpegmini.com" target="_blank" rel="external">JPEGmini</a> : 이미지 경량화 사이트</li>
+<li><a href="http://modernuiicons.com" target="_blank" rel="external">Modern UI Icons</a> : UI Icon 사이트</li>
+<li><a href="https://m.pikicast.com/contents/?contentsId=210971" target="_blank" rel="external">나만 알고 싶었던 일러스트 사이트 6</a> : 일러스트 사이트 모음</li>
+<li><a href="http://slowalk.tistory.com/2389" target="_blank" rel="external">디자이너가 알아야 할 플랫 디자인 개론</a></li>
+</ul>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;ul&gt;
+&lt;li&gt;필요할 때 참고할 만한 사이트 링크를 기록해두는 포스트입니다.&lt;/li&gt;
+&lt;li&gt;지속적으로 갱신되는 포스트입니다.&lt;/li&gt;
+&lt;li&gt;디자인과 관련된 사이트만 기록합니다.&lt;/li&gt;
+&lt;/ul&gt;
+    
+    </summary>
+    
+      <category term="Reference" scheme="http://blog.lattecom.xyz/categories/reference/"/>
+    
+      <category term="Design" scheme="http://blog.lattecom.xyz/categories/reference/design/"/>
+    
+    
+      <category term="디자인" scheme="http://blog.lattecom.xyz/tags/%EB%94%94%EC%9E%90%EC%9D%B8/"/>
+    
+      <category term="design" scheme="http://blog.lattecom.xyz/tags/design/"/>
+    
+      <category term="참고" scheme="http://blog.lattecom.xyz/tags/%EC%B0%B8%EA%B3%A0/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Swift를 이용한 iOS 화면 전환</title>
+    <link href="http://blog.lattecom.xyz/2016/06/06/swift-ios-scene-transition/"/>
+    <id>http://blog.lattecom.xyz/2016/06/06/swift-ios-scene-transition/</id>
+    <published>2016-06-05T15:46:32.000Z</published>
+    <updated>2016-08-23T12:44:49.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>iOS에서 화면전환에는 크게 4가지가 있다고 한다.</p>
+<ol>
+<li>뷰 컨트롤러의 뷰 위에 다른 뷰컨트롤러의 뷰를 가져와 바꿔치기</li>
+<li>뷰 컨트롤러에서 다른 뷰 컨트롤러를 호출하기</li>
+<li>내비게이션 컨트롤러 사용하기</li>
+<li>화면 전환용 객체 세그웨이(Segueway) 사용하기</li>
+</ol>
+<p>위에서 1번 방식은 하나의 뷰 컨트롤러가 두 개 이상의 싱글 뷰를 관리하기에 좋은 방법이 아니라 잘 사용하지 않는다.<br><a id="more"></a></p>
+<p>기본적으로 iOS의 화면 전환은 stack과 같은 느낌이다. 화면이 바뀔 때마다 원래 있던 화면 위에 새 화면이 올라가는 형식이다. 여기서 주의 해야할 부분은 이전 화면으로 돌아갈 때엔 새 화면을 올릴 때처럼 이전화면을 새로 위에 올리는게 아니라 stack에서 pop을 하는 것처럼 올렸던 화면을 빼야한다는 것이다. 이전 화면으로 돌아갈 때 현재화면의 pop이 아니라 이전화면의 push로 구현시엔 인스턴스가 중복되어 에러가 발생할 수도 있고, 에러가 나지 않더라도 메모리 낭비로 이어지기때문에 주의해야한다. 때문에 위에서 언급한 화면 전환 기법들엔 push에 해당하는 메소드와 pop에 해당하는 메소드가 쌍을 이루고있다.</p>
+<h3 id="2-뷰-컨트롤러에서-다른-뷰-컨트롤러를-호출하기"><a href="#2-뷰-컨트롤러에서-다른-뷰-컨트롤러를-호출하기" class="headerlink" title="2. 뷰 컨트롤러에서 다른 뷰 컨트롤러를 호출하기"></a>2. 뷰 컨트롤러에서 다른 뷰 컨트롤러를 호출하기</h3><ul>
+<li><code>presentViewController(_:animated:completion:)</code></li>
+<li><code>dismissViewControllerAnimated(_:completion:)</code></li>
+</ul>
+<p>이 방법에서 주의해야할 점은 위 메소드를 호출하는 객체가 동일하다는 것이다.<br>뷰 컨트롤러 A가 <code>self.presentViewController(_:animated:completion:)</code>로 뷰 컨트롤러 B를 호출하면 B와 A사이에는 다음과 같은 속성을 갖는다.<br>A.presentedViewController =&gt; B<br>B.presentingViewController =&gt; A</p>
+<p>여기서 B에서 A로 돌아갈 땐 A에서 B로 갈 때처럼 <code>self.dismissViewControllerAnimated(_:completion:)</code>이 아니라 다음과 같이 A를 참조하여  호출한다. <code>self.presentingViewController?.dismissViewControllerAnimated(_:completion:)</code></p>
+<h3 id="3-네비게이션-컨트롤러-사용하기"><a href="#3-네비게이션-컨트롤러-사용하기" class="headerlink" title="3. 네비게이션 컨트롤러 사용하기"></a>3. 네비게이션 컨트롤러 사용하기</h3><ul>
+<li><code>pushViewController(_:animated:)</code></li>
+<li><code>popViewControllerAnimated(_:)</code></li>
+</ul>
+<p>이 방법은 전체적인 화면 관리를 navigationController가 맡아서 한다는 것이 특징이다. 2번 방법은 뷰 컨트롤러가 직접 메소드를 호출했지만, 3번 방법은 2가지 메소드 모두 아래와 같이 navigationController가 호출한다.<br><code>self.navigationController?.pushViewController(_:animated:)</code><br><code>self.navigationController?.popViewControllerAnimated(_:)</code></p>
+<p>네비게이션 컨트롤러를 이용한 방법의 특징 중 하나는 <code>pushViewController(_:animated:)</code>를 이용하여 화면 전환을 하게 되면 전환된 뷰 컨트롤러에 자동으로 네비게이션 바가 탑재되고, 네비게이션 바 왼쪽에 아이템을 별도로 지정하지 않았을 경우 자동으로 <code>popViewControllerAnimated(_:)</code>를 이용한 Unwind가 구현된다는 것이다.</p>
+<h3 id="4-화면-전환용-객체-세그웨이-Segueway-사용하기"><a href="#4-화면-전환용-객체-세그웨이-Segueway-사용하기" class="headerlink" title="4. 화면 전환용 객체 세그웨이(Segueway) 사용하기"></a>4. 화면 전환용 객체 세그웨이(Segueway) 사용하기</h3><ul>
+<li>Action Segue</li>
+<li>Manual Segue</li>
+</ul>
+<p>세그웨이는 스위프트 코드가 아닌 스토리보드 상에서 그래피컬하게 전환을 설정한다. 세부적으로 코딩도 들어가긴 하지만 기본적인 전환 관계를 스토리보드상에서 연결하며 직관적으로 알아보기 쉽게 화살표로 표시를 해준다. 세그웨이엔 2가지 ‘Action Segue’와 ‘Manual Segue’가 존재한다. 액션 세그는 버튼등 이벤트가 발생하는 객체와 뷰 컨트롤러를 직접 연결할 때 사용하며, 매뉴얼 세그는 뷰 컨트롤러와 뷰 컨트롤러를 직접 연결하며 <code>performSegueWithIdentifier(_:sender:)</code>를 특정 시점에 호출하여 전환을 한다. 세그웨이를 이용한 전환에서 Unwind의 경우 스토리보드에서 뷰 컨트롤러를 선택시 윗 부분에 나타나는 3개의 아이콘 중에서 오른쪽 끝에 있는 Exit 아이콘에 연결하여 복귀할 뷰 컨트롤러 클래스에서 정의된 Unwind 메소드를 지정함으로써 구현한다.</p>
+<p>세그웨이는 UIStoryboardSegue 클래스를 상속받아 커스텀 세그를 구현할 수 있다. 이미 정의되어있는 <code>perform(_:)</code> 메소드를 override하여 구현한다.</p>
+<p><code>prepareForSegue(segue: UIStoryboardSegue, sender: Anyobject?)</code> 메소드를 전환 되는 시점의 뷰 컨트롤러 클래스에 재정의(override)하여 세그웨이가 실행되기 전 특정 코드를 실행할 수 있다.</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;iOS에서 화면전환에는 크게 4가지가 있다고 한다.&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;뷰 컨트롤러의 뷰 위에 다른 뷰컨트롤러의 뷰를 가져와 바꿔치기&lt;/li&gt;
+&lt;li&gt;뷰 컨트롤러에서 다른 뷰 컨트롤러를 호출하기&lt;/li&gt;
+&lt;li&gt;내비게이션 컨트롤러 사용하기&lt;/li&gt;
+&lt;li&gt;화면 전환용 객체 세그웨이(Segueway) 사용하기&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;위에서 1번 방식은 하나의 뷰 컨트롤러가 두 개 이상의 싱글 뷰를 관리하기에 좋은 방법이 아니라 잘 사용하지 않는다.&lt;br&gt;
+    
+    </summary>
+    
+      <category term="Dev" scheme="http://blog.lattecom.xyz/categories/dev/"/>
+    
+      <category term="iOS" scheme="http://blog.lattecom.xyz/categories/dev/ios/"/>
+    
+    
+      <category term="iOS" scheme="http://blog.lattecom.xyz/tags/ios/"/>
+    
+      <category term="swift" scheme="http://blog.lattecom.xyz/tags/swift/"/>
+    
+      <category term="화면 전환" scheme="http://blog.lattecom.xyz/tags/%ED%99%94%EB%A9%B4-%EC%A0%84%ED%99%98/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Processing symbol files 경고(?)</title>
+    <link href="http://blog.lattecom.xyz/2016/05/19/processing-symbol-files/"/>
+    <id>http://blog.lattecom.xyz/2016/05/19/processing-symbol-files/</id>
+    <published>2016-05-19T11:53:37.000Z</published>
+    <updated>2016-08-23T12:44:49.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>Swift로 iOS 앱 개발 공부 중 아이폰을 직접 연결하여 실제 단말기에 실행 시키려 하니 아래와 같은 메세지가 뜨면서 실행이 중지되었다.</p>
+<p><img src="/assets/images/processing-symbol-files.png" alt="Processing symbol files"></p>
+<a id="more"></a>
+<p>구글링을 해보니 iOS를 업데이트하고 처음 Xcode에 연결하면 나타나는 증상으로 해당 디바이스로부터 디버깅을 위한 symbol files(구체적으로 어떤 역할을 하는지는 잘 모름)을 Xcode에서 인덱싱을 마치면 정상적으로 디바이스에 실행 및 테스트할 수 있게 된다.</p>
+<p>필자는 iOS 9.3.1 –&gt; iOS 9.3.2 로 업데이트하고 위와 같은 증상이 나타났다. 조금 기다리고 프로세싱이 끝난후 실행하니 정상적으로 실행되었다.</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;Swift로 iOS 앱 개발 공부 중 아이폰을 직접 연결하여 실제 단말기에 실행 시키려 하니 아래와 같은 메세지가 뜨면서 실행이 중지되었다.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/assets/images/processing-symbol-files.png&quot; alt=&quot;Processing symbol files&quot;&gt;&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="Dev" scheme="http://blog.lattecom.xyz/categories/dev/"/>
+    
+      <category term="Xcode" scheme="http://blog.lattecom.xyz/categories/dev/xcode/"/>
+    
+    
+      <category term="error" scheme="http://blog.lattecom.xyz/tags/error/"/>
+    
+      <category term="iOS" scheme="http://blog.lattecom.xyz/tags/ios/"/>
+    
+      <category term="Xcode" scheme="http://blog.lattecom.xyz/tags/xcode/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>[번역]Pintos Project Guide</title>
+    <link href="http://blog.lattecom.xyz/2016/05/13/pintos-guide/"/>
+    <id>http://blog.lattecom.xyz/2016/05/13/pintos-guide/</id>
+    <published>2016-05-13T12:06:06.000Z</published>
+    <updated>2016-08-23T12:44:49.000Z</updated>
+    
+    <content type="html"><![CDATA[<ul>
+<li>이 포스트는 지속적으로 갱신되는 포스트입니다.</li>
+<li>이 포스트는 개인적으로 Pintos 프로젝트를 진행하며 스탠포드에서 제공하는 <a href="https://web.stanford.edu/class/cs140/projects/pintos/pintos.html" target="_blank" rel="external">Pintos Project Guide</a> 페이지를 해석해둔 것을 기록하는 포스트입니다.</li>
+<li>본인의 영어 실력이 부족하여 어마무시하게 많은 오역과 의역이 있습니다.</li>
+<li>위와 같은 이유로 해석하지 않고 넘어가는 부분도 굉장히 많습니다.</li>
+</ul>
+<h2 id=""><a href="#" class="headerlink" title=""></a><a id="more"></a></h2><h2 id="Table-of-Contents"><a href="#Table-of-Contents" class="headerlink" title="Table of Contents"></a>Table of Contents</h2><ol>
+<li><a href="#1-Introduction">Introduction</a><br>1.1. <a href="#1-1-Getting-Started">Getting Started</a><br> 1.1.1. <a href="#1-1-1-Source-Tree-Overview">Source Tree Overview</a><br> 1.1.2. Building Pintos<br> 1.1.3. Running Pintos<br> 1.1.4. Debugging versus Testing<br>1.2 Grading<br> 1.2.1 Testing<br> 1.2.2 Design<br>   1.2.2.1 Design Document<br>   1.2.2.2 Source Code<br> 1.3 Legal and Ethical Issues<br> 1.4 Acknowledgements<br> 1.5 Trivia</li>
+<li><a href="#2-Project-1-Threads">Project 1: Threads</a><br>2.1 <a href="#2-1-Background">Background</a><br> 2.1.1 <a href="#2-1-1-Understanding-Threads">Understanding Threads</a><br> 2.1.2 <a href="#2-1-2-Source-Files">Source Files</a><br>   2.1.2.1 <a href="#2-1-2-1-“devices”-code">“devices” code</a><br>   2.1.2.2 <a href="#2-1-2-2-“lib”-files">“lib” files</a><br> 2.1.3 Synchronization<br> 2.1.4 Development Suggestions<br>2.2 Requirements<br> 2.2.1 Design Document<br> 2.2.2 Alarm Clock<br> 2.2.3 Priority Scheduling<br> 2.2.4 Advanced Scheduler<br>2.3 FAQ<br> 2.3.1 Alarm Clock FAQ<br> 2.3.2 Priority Scheduling FAQ<br> 2.3.3 Advanced Scheduler FAQ</li>
+</ol>
+<hr>
+<h2 id="1-Introduction"><a href="#1-Introduction" class="headerlink" title="1. Introduction"></a>1. Introduction</h2><h3 id="1-1-Getting-Started"><a href="#1-1-Getting-Started" class="headerlink" title="1.1 Getting Started"></a>1.1 Getting Started</h3><h4 id="1-1-1-Source-Tree-Overview"><a href="#1-1-1-Source-Tree-Overview" class="headerlink" title="1.1.1 Source Tree Overview"></a>1.1.1 Source Tree Overview</h4><p>이제 다음 명령어를 실행해서 “pintos/src”라는 이름의 디렉토리에 Pintos source를 추출할 수 있다.<code>zcat /usr/class/cs140/pintos/pintos.tar.gz | tar x</code> 또는, <a href="http://www.stanford.edu/class/cs140/projects/pintos/pintos.tar.gz" target="_blank" rel="external">http://www.stanford.edu/class/cs140/projects/pintos/pintos.tar.gz</a> 에서 내려 받고 비슷한 방법으로 추출할 수 있다.</p>
+<p>“pintos/src”</p>
+<p>“threads/“<br>  = base kernel 소스코드, 프로젝트 1에서 이 코드를 수정할 것이다.</p>
+<p>“userprog/“<br>  = user program loader 소스코드, 프로젝트 2에서 이 코드를 수정할 것이다.</p>
+<p>“vm/“<br>  = 거의 빈 디렉토리. 프로젝트 3에서 여기에 virtual memory를 구현할 것이다.</p>
+<p>“filesys/“<br>  = basic file system 소스코드. 프로젝트 2에서 이 file system을 사용할 것이다. 하지만 프로젝트 4 까지는 이 소스코드를 수정하지 않을 것이다.</p>
+<p>“lib/“</p>
+<p>“lib/kernel/“</p>
+<p>“lib/user/“</p>
+<p>“tests/“</p>
+<p>“examples/“</p>
+<p>“misc/“<br>“utils/“</p>
+<h2 id="2-Project-1-Threads"><a href="#2-Project-1-Threads" class="headerlink" title="2. Project 1: Threads"></a>2. Project 1: Threads</h2><p>이 과제에서, 당신에게 최소한의 기능을 가진 thread system을 줄 것이다. 동기화 문제의 이해를 돕기 위하여, 이 thread system의 기능성을 확장하는 것이 당신이 할 일이다. 이번 과제를 하기 위해 주로 “threads” 디렉토리에서 주로 작업을 하고, 몇 가지 작업은 “devices” 디렉토리에서 하게 될 것이다. 소개는 “threads” 디렉토리로 했다. 이번 프로젝트 설명을 읽기전에 아래의 섹션을 모두 읽고 오길 권한다.</p>
+<ul>
+<li>1. Introduction</li>
+<li>C. Coding Standards</li>
+<li>E. Debugging Tools</li>
+<li>F. Development Tools</li>
+</ul>
+<p>적어도 A.1 Loading 부터 A.5 Memory Allocation을, 특히 A.3 Synchronization은 훑어보기 바란다. 이번 프로젝트를 완성하기 위해서는 B.4.4BSD Scheduler 또한 읽어야 할 것이다.</p>
+<h3 id="2-1-Background"><a href="#2-1-Background" class="headerlink" title="2.1 Background"></a>2.1 Background</h3><h4 id="2-1-1-Understading-Threads"><a href="#2-1-1-Understading-Threads" class="headerlink" title="2.1.1 Understading Threads"></a>2.1.1 Understading Threads</h4><p>처음 할일은 초기 thread system 코드를 읽고 이해하는 것이다. Pintos 는 이미 thread creation 과 thread completion, thread 사이를 전환하는 간단한 scheduler, 기본적인 동기화(semaphores, locks, condition variables, and optimization barriers)가 구현되어있다.</p>
+<p>몇몇 코드들은 약간 애매모호하게 보일 수도 있다. 만약 아직 base system을 컴파일하지 않고 구동시키지 않았다면, introduction에서 설명한 대로(섹션 1. Introduction을 보라) 지금 바로 해야한다.</p>
+<h4 id="2-1-2-Source-Files"><a href="#2-1-2-Source-Files" class="headerlink" title="2.1.2 Source Files"></a>2.1.2 Source Files</h4><h5 id="2-1-2-1-“devices”-code"><a href="#2-1-2-1-“devices”-code" class="headerlink" title="2.1.2.1 “devices” code"></a>2.1.2.1 “devices” code</h5><p>기본 threaded kernel은 “devices” 디렉토리의 이런 파일들도 포함한다.</p>
+<p>“timer.c”<br>“timer.h”<br>  = system timer 인 ticks, 기본적으로 초당 100회. 이번 프로젝트에서 이 코드를 수정할 것이다.</p>
+<p>“serial.c”<br>“serial.h”<br>  = 직렬 포트 드라이버,</p>
+<p>“block.c”<br>“block.h”<br>  = block device를 위한 추상 레이어, 즉, random-access, 고정된 크기의 블럭의 배열로 구성된 disk-like devices.</p>
+<h4 id="2-1-2-2-“lib”-files"><a href="#2-1-2-2-“lib”-files" class="headerlink" title="2.1.2.2 “lib” files"></a>2.1.2.2 “lib” files</h4><p>마지막으로 “lib” 와 “lib/kernel” 디렉토리에 유용한 라이브러리 루틴들이 있다. (“lib/user”는 프로젝트 2에서 다루는 user programs에서 사용할 것이다. 커널 부분은 아니다.) 여기에 몇 가지 더 자세한 내용은 다음과 같습니다.</p>
+<p>“ctype.h”<br>“inttypes.h”<br>“limits.h”<br>“stdarg.h”<br>“stdbool.h”<br>“stddef.h”<br>“stdint.h”<br>“stdio.c”<br>“stdio.h”<br>“stdlib.c”<br>“stdlib.h”<br>“string.c”<br>“string.h”<br> = C 표준 라이브러리의 일부다. 최근 C 라이브러리의 소개에 대해서 본적이 없다면, 섹션 <a href="#">C.2 C99</a>를 보면 해당 정보를 알 수 있다. 안전을위해 의도적으로 빠진부분이 무엇인지 알고싶으면 섹션 <a href="">C.3 Unsafe String Functions</a>을 봐라.</p>
+<p>“debug.c”<br>“debug.h”<br> = 디버깅을 위한 함수와 매크로. 섹션 <a href="#">E</a>에 디버깅툴과 좀더 자세한 설명이 있다.</p>
+<p>“random.c”<br>“random.h”<br> = 의사 난수 생성기(Pseudo-random number generator).<br> The actual sequence of random values will not vary from one Pintos run to another, unless you do one of three things: specify a new random seed value on the -rs kernel command-line option on each run, or use a simulator other than Bochs, or specify the -r option to pintos.</p>
+<p>round.h<br> = 라운딩 매크로.</p>
+<p>“syscall-nr.h”<br> = 시스템 콜 넘버. 프로젝트 2까지 사용하지 않는다.</p>
+<p>“kernel/list.c”<br>“kernel/list.h”<br> = Doubly linked list 구현. Pintos 코드 전반에 걸쳐 사용한다. 당신은 아마 프로젝트 1 곳곳에서 사용하게 될 것이다.</p>
+<p>“kernel/bitmap.c”<br>“kernel/bitmap.h”<br> = Bitmap 구현. 당신이 원한다면 당신의 코드에 사용할 수 있다. 하지만 아마 프로젝트 1에서 사용하지 않을 것이다.</p>
+<p>“kernel/hash.c”<br>“kernel/hash.h”<br> = Hash table 구현. 프로젝트 3에서 유용하게 쓸 것이다.</p>
+<p>“kernel/console.c”<br>“kernel/console.h”<br>“kernel/stdio.h”<br> = <code>printf()</code>와 몇몇 함수의 구현.</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;ul&gt;
+&lt;li&gt;이 포스트는 지속적으로 갱신되는 포스트입니다.&lt;/li&gt;
+&lt;li&gt;이 포스트는 개인적으로 Pintos 프로젝트를 진행하며 스탠포드에서 제공하는 &lt;a href=&quot;https://web.stanford.edu/class/cs140/projects/pintos/pintos.html&quot;&gt;Pintos Project Guide&lt;/a&gt; 페이지를 해석해둔 것을 기록하는 포스트입니다.&lt;/li&gt;
+&lt;li&gt;본인의 영어 실력이 부족하여 어마무시하게 많은 오역과 의역이 있습니다.&lt;/li&gt;
+&lt;li&gt;위와 같은 이유로 해석하지 않고 넘어가는 부분도 굉장히 많습니다.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&quot;&quot;&gt;&lt;a href=&quot;#&quot; class=&quot;headerlink&quot; title=&quot;&quot;&gt;&lt;/a&gt;
+    
+    </summary>
+    
+      <category term="Dev" scheme="http://blog.lattecom.xyz/categories/dev/"/>
+    
+      <category term="PintOS" scheme="http://blog.lattecom.xyz/categories/dev/pintos/"/>
+    
+    
+      <category term="pintos" scheme="http://blog.lattecom.xyz/tags/pintos/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Tranquilpeak 테마에 웹 폰트 적용하기</title>
+    <link href="http://blog.lattecom.xyz/2016/05/08/tranquilpeak-theme-web-font/"/>
+    <id>http://blog.lattecom.xyz/2016/05/08/tranquilpeak-theme-web-font/</id>
+    <published>2016-05-08T11:42:04.000Z</published>
+    <updated>2016-08-23T12:44:49.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>hexo blog 테마로 <a href="https://github.com/LouisBarranqueiro/hexo-theme-tranquilpeak" target="_blank" rel="external">Tranquilpeak</a>을 사용 중 입니다. 깔끔한 디자인에 반응형으로 모바일까지 잘 지원합니다. 다른 테마들과 비교하여 가장 마음에 들었던 부분은 검색 부분입니다. 대부분의 테마들은 구글 도메인 검색으로 대체한 것이 마음에 안들었는데, Tranquilpeak 테마는 <a href="https://swiftype.com" target="_blank" rel="external">swiftype</a>을 활용하여 플러그인 형태로 쉽게 적용하게 만들어 둔 것이 마음에 들어 사용하고 있습니다.<br><a id="more"></a><br>오늘은 이 테마에 Font를 제가 원하는 웹폰트를 적용한 방법을 남기려 합니다.</p>
+<p>우선 사용할 웹 폰트 파일을 css에 import시켜 주어야합니다. Tranquilpeak 테마에서 전체 css파일을 관리하는 <code>tranquilpeak/source/_css/tranquilpeak.scss</code>파일을 열어 가장 마지막에 다음과 같이 사용할 웹폰트 url을 추가해줍니다.</p>
+<figure class="highlight scss"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">@<span class="keyword">import</span></div><div class="line">    url(http://fonts.googleapis.com/earlyaccess/notosanskr.css),</div><div class="line">    url(http://fonts.googleapis.com/earlyaccess/nanumgothiccoding.css);</div></pre></td></tr></table></figure>
+<p>저는 본고딕-한글과 나눔고딕코딩을 추가했습니다.</p>
+<p>이후엔 실제 폰트 적용 부분을 수정해보겠습니다.<br><code>tranquilpeak/source/_css/utils/_variables.scss</code> 파일 윗 부분에 font-family를 위한 변수 정의 부분에 아래와 같이 사용할 웹폰트를 추가해줍니다.</p>
+<figure class="highlight scss"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="variable">$noto-sans-kr</span>:          <span class="string">'Noto Sans KR'</span>, sans-serif;</div><div class="line"><span class="variable">$nanum-gothic-coding</span>:   <span class="string">'Nanum Gothic Coding'</span>, monospace;</div></pre></td></tr></table></figure>
+<p>저는 위에서 추가해준 본고딕을 <code>$noto-sans-kr</code>로, 나눔고딕코딩을 <code>$nanum-gothic-coding</code>으로 정의해주었습니다. 아래 이미지 처럼 추가해주시면 됩니다.</p>
+<p><img src="/assets/images/web-font-variables.png" alt="web font variables"></p>
+<p>이후에 기본 폰트 설정 값을 <code>$open-sans-sans-serif</code>에서 아래와 같이 <code>$noto-sans-kr</code>로 변경해주었습니다.</p>
+<p><img src="/assets/images/default-font.png" alt="default font"></p>
+<p>이후에 사이트 전체의 font를 바꾸어 줍니다. 아래와 같이 <code>$font-families</code>에 있는 값들을 수정해주면 됩니다.</p>
+<figure class="highlight scss"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"><span class="variable">$font-families</span>: (</div><div class="line">   // base</div><div class="line">   <span class="string">'headings'</span>:          <span class="variable">$open-sans-sans-serif</span>,</div><div class="line">   // components</div><div class="line">   <span class="string">'code'</span>:              <span class="variable">$menlo</span>,</div><div class="line">   <span class="string">'caption'</span>:           <span class="variable">$merriweather-serif</span>,</div><div class="line">   <span class="string">'image-gallery'</span>:     <span class="variable">$open-sans</span>,</div><div class="line">   <span class="string">'post-header-cover'</span>: <span class="variable">$merriweather-serif</span>,</div><div class="line">   <span class="string">'post-meta'</span>:         <span class="variable">$open-sans-sans-serif</span>,</div><div class="line">   <span class="string">'post-content'</span>:      <span class="variable">$merriweather-serif</span>,</div><div class="line">   <span class="string">'post-excerpt-link'</span>: <span class="variable">$open-sans-sans-serif</span>,</div><div class="line">   <span class="string">'highlight'</span>:         <span class="variable">$menlo</span>,</div><div class="line">   // layout</div><div class="line">   <span class="string">'sidebar'</span>:           <span class="variable">$open-sans-sans-serif</span></div><div class="line">);</div></pre></td></tr></table></figure>
+<p>저는 아래 사진처럼 코드 및 하이라이트 부분엔 나눔고딕코딩을, 이외 모든 부분엔 본고딕을 적용했습니다.<br><img src="/assets/images/font-families-web.png" alt="font families web"></p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;hexo blog 테마로 &lt;a href=&quot;https://github.com/LouisBarranqueiro/hexo-theme-tranquilpeak&quot;&gt;Tranquilpeak&lt;/a&gt;을 사용 중 입니다. 깔끔한 디자인에 반응형으로 모바일까지 잘 지원합니다. 다른 테마들과 비교하여 가장 마음에 들었던 부분은 검색 부분입니다. 대부분의 테마들은 구글 도메인 검색으로 대체한 것이 마음에 안들었는데, Tranquilpeak 테마는 &lt;a href=&quot;https://swiftype.com&quot;&gt;swiftype&lt;/a&gt;을 활용하여 플러그인 형태로 쉽게 적용하게 만들어 둔 것이 마음에 들어 사용하고 있습니다.&lt;br&gt;
+    
+    </summary>
+    
+      <category term="Blog" scheme="http://blog.lattecom.xyz/categories/blog/"/>
+    
+      <category term="Hexo" scheme="http://blog.lattecom.xyz/categories/blog/hexo/"/>
+    
+    
+      <category term="hexo" scheme="http://blog.lattecom.xyz/tags/hexo/"/>
+    
+      <category term="theme" scheme="http://blog.lattecom.xyz/tags/theme/"/>
+    
+      <category term="tranquilpeak" scheme="http://blog.lattecom.xyz/tags/tranquilpeak/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>정적 블로그 프레임워크 Hexo</title>
+    <link href="http://blog.lattecom.xyz/2016/02/15/hexo-init/"/>
+    <id>http://blog.lattecom.xyz/2016/02/15/hexo-init/</id>
+    <published>2016-02-15T12:46:21.000Z</published>
+    <updated>2016-08-23T12:44:49.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>블로그를 시작하려고 다양한 블로그 서비스들을 알아보고 있었습니다.<br>흔하게 많은 사용자들이 쓰는 ‘네이버 블로그’, ‘티스토리’, ‘워드프레스 닷컴’ 등의 서비스형 블로그를 우선적으로 찾아보았고, ‘워드프레스’, ‘텍스트큐브’ 등 설치형 블로그에 대해서도 알아보았습니다. 두 가지 모두 각각 장단점이 있습니다.<br><a id="more"></a><br>서비스형 블로그의 경우 쉬운 접근성과 별도의 호스팅을 하지 않아도 되는 장점이 있고, 커스터마이징에 어느정도 제약과 어려움이 있다는 단점이 있습니다.<br>설치형 블로그의 경우에는 다양한 플러그인, 테마등으로 자유롭게 확장을 하거나 꾸미는 부분은 장점이지만 호스팅비용이 별도로 드는 점은 일반적으로 단점으로 작용하게 됩니다.</p>
+<p>여러 면으로 비교해가며 저울질해가며 알아보던 중 정적페이지 기반의 블로그에 대해 접하게 되었습니다.</p>
+<h2 id="정적페이지-그리고-블로그"><a href="#정적페이지-그리고-블로그" class="headerlink" title="정적페이지 그리고 블로그"></a>정적페이지 그리고 블로그</h2><p>정적페이지란 하나의 완성된 html 파일로, 별도의 가공없이 클라이언트에게 제공하는 것으로 볼 수 있습니다.<br>반대로 동적페이지는 php, jsp 등의 서버사이드 언어로 구현된 파일로, 클라이언트의 요청이 있을 시 DB로부터 데이터를 받아 html 페이지를 생성해 보내줍니다.</p>
+<p>최근 다양한 웹사이트들은 동적페이지로 구현된 사이트들이 대부분입니다. 일반적인 사이트들은 회원정보, 게시판의 게시글, 혹은 쇼핑몰의 판매물품 등의 데이터들을 가지고 페이지를 생성하기 때문에 이러한 동적페이지가 필요합니다.<br>하지만 블로그라는 환경에서 하나의 포스팅은 작성을 끝낸 시점에서 완성된 컨텐츠입니다. 매번 DB에서 정보를 가져와 생성할 필요가 없기 때문에 완성된 html로 저장을 하고, 그대로 클라이언트에게 보내주기만 하면 됩니다. 이러한 배경으로 정적페이지 기반의 정적블로그들이 생겨나기 시작했습니다.</p>
+<p>대표적인 정적블로그 툴로 인기가 많은 ‘Jekyll’과 ‘Octopress’ 등이 있습니다. 조금 더 찾아보던 중 hexo라는 툴을 만나게 되어 지금 이 포스트를 작성하는 블로그를 hexo로 만들게 되었습니다.</p>
+<p>다른 정적블로그 툴과 마찬가지로 마크다운을 지원하여 손쉬운 포스트 작성과, 깃허브의 GitHub-Pages를 이용한 호스팅을 지원하기 때문에 무료로 블로그를 이용할 수 있습니다. 또한 오픈소스 테마나 직접 수정하여 자유로운 커스터마이징이 장점으로 다가와 최종적으로 선택하게 되었습니다.</p>
+<h2 id="Hexo-Static-Blog-Framework"><a href="#Hexo-Static-Blog-Framework" class="headerlink" title="Hexo - Static Blog Framework"></a>Hexo - Static Blog Framework</h2><p>Hexo는 node.js 로 작성된 Framework로 npm을 통해서 간단하게 설치할 수 있습니다.<br>(npm은 Node Packaged Modules의 약자로 javascript package manager입니다. 여러 가지 패키지들을 손쉽게 설치 및 사용할 수 있도록 도와주는 툴로, 기본적으로 nodejs를 설치하면 같이 설치됩니다. nodejs 는 <a href="https://nodejs.org/en/download/" target="_blank" rel="external">링크</a>에서 본인이 사용하는 환경에 맞게 설치하면 됩니다.)</p>
+<p><a href="https://hexo.io" target="_blank" rel="external">Hexo 공식 사이트</a>에 간단한 설치방법과 사용법이 나와있습니다. 아래는 공식 사이트 메인에 나와있는 start 명령어에 주석을 더해 보았습니다.<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">$ npm install hexo-cli -g   <span class="comment">#hexo 를 설치하고</span></div><div class="line">$ hexo init blog            <span class="comment">#./blog/ 에 hexo 기본 파일들을 생성</span></div><div class="line">$ <span class="built_in">cd</span> blog                   <span class="comment">#blog 디렉토리로 이동</span></div><div class="line">$ npm install               <span class="comment">#package.json을 참조하여 필요한 모듈 설치</span></div><div class="line">$ hexo server               <span class="comment">#테스트용 server 구동(기본 포트: 4000)</span></div></pre></td></tr></table></figure></p>
+<p>다음 포스트에서 hexo를 이용해 포스팅하는 법에 대해 알아보겠습니다.</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;블로그를 시작하려고 다양한 블로그 서비스들을 알아보고 있었습니다.&lt;br&gt;흔하게 많은 사용자들이 쓰는 ‘네이버 블로그’, ‘티스토리’, ‘워드프레스 닷컴’ 등의 서비스형 블로그를 우선적으로 찾아보았고, ‘워드프레스’, ‘텍스트큐브’ 등 설치형 블로그에 대해서도 알아보았습니다. 두 가지 모두 각각 장단점이 있습니다.&lt;br&gt;
+    
+    </summary>
+    
+      <category term="Blog" scheme="http://blog.lattecom.xyz/categories/blog/"/>
+    
+      <category term="Hexo" scheme="http://blog.lattecom.xyz/categories/blog/hexo/"/>
+    
+    
+      <category term="hexo" scheme="http://blog.lattecom.xyz/tags/hexo/"/>
+    
+      <category term="blog" scheme="http://blog.lattecom.xyz/tags/blog/"/>
+    
+      <category term="static blog" scheme="http://blog.lattecom.xyz/tags/static-blog/"/>
+    
+      <category term="정적블로그" scheme="http://blog.lattecom.xyz/tags/%EC%A0%95%EC%A0%81%EB%B8%94%EB%A1%9C%EA%B7%B8/"/>
+    
+      <category term="블로그" scheme="http://blog.lattecom.xyz/tags/%EB%B8%94%EB%A1%9C%EA%B7%B8/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>라즈베리파이 사용기-1</title>
+    <link href="http://blog.lattecom.xyz/2015/12/20/raspberrypi-review/"/>
+    <id>http://blog.lattecom.xyz/2015/12/20/raspberrypi-review/</id>
+    <published>2015-12-20T10:15:21.000Z</published>
+    <updated>2016-08-23T12:44:49.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>나중에 필요할 때 참고할 수 있도록 라즈베리파이(이하 산딸기)를 사용하는 흔적들을 남기려 합니다.<br>주로 무언가 설치하거나 설정하는 방법들에 대해서 기록할 것입니다.<br><a id="more"></a></p>
+<h2 id="OS-설치"><a href="#OS-설치" class="headerlink" title="OS 설치"></a>OS 설치</h2><p>산딸기에 OS를 설치하는 방법으로 크게 두 가지가 있습니다.</p>
+<ul>
+<li>OS 이미지를 SD카드에 옮겨 설치</li>
+<li>NOOBS를 이용하여 설치</li>
+</ul>
+<p>NOOBS는 산딸기를 위한 OS를 손쉽게 설치할 수 있도록 도와주는 툴입니다. NOOBS를 이용하면 Raspbian, Pidora, OpenElec, OSMC 등 산딸기에 많이 쓰이는 OS들을 간단하게 선택해서 설치할 수 있습니다.<br><a href="https://www.raspberrypi.org/downloads/noobs/" target="_blank" rel="external">링크</a> 에서 내려받아 이용할 수 있습니다.</p>
+<p>저는 NOOBS를 이용해 Raspbian을 설치했습니다.</p>
+<h2 id="초기-세팅"><a href="#초기-세팅" class="headerlink" title="초기 세팅"></a>초기 세팅</h2><p>설치 후 기본적으로 라즈비안을 쓰기 위한 세팅을 합니다.</p>
+<h3 id="사용자-계정을-관리"><a href="#사용자-계정을-관리" class="headerlink" title="사용자 계정을 관리"></a>사용자 계정을 관리</h3><p> 라즈비안을 설치하면 기본 계정으로</p>
+<ul>
+<li>ID: pi</li>
+<li>PW: raspberry</li>
+</ul>
+<p>인 계정이 있습니다.<br>산딸기를 서버 등으로 사용하지 않고 로컬에서만 사용한다면 큰 문제 없겠지만, 그렇지 않다면 보안상의 이유로 다른 계정을 만들어서 사용하거나 패스워드를 변경하여 사용해야 합니다. 저는 별도로 계정을 만들어서 진행하였습니다.<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ sudo useradd -m green</div></pre></td></tr></table></figure></p>
+<p>useradd 명령어로 ‘green’ 계정을 생성하였습니다. 여기서 -m 옵션을 주면 자동으로 /home 디렉터리에 /home/green 디렉터리와 하위에 기본적인 디렉터리를 생성해줍니다.<br>그리고서 green 계정에 sudo 권한을 주기 위해 /etc/sudoers 파일을 수정해주었습니다.<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ sudo vi /etc/sudoers</div></pre></td></tr></table></figure></p>
+<p>파일 맨 아래에 <code>green ALL=(ALL) NOPASSWD: ALL</code> 을 추가해줍니다. 덤으로 pi 계정에 권한을 없애기 위해 <code>pi ALL=(ALL) NOPASSWD: ALL</code> 줄은 삭제해줍니다.</p>
+<p>이후 작업은 산딸기에서 직접 안 하고 ssh로 접속하여 진행하였습니다.<br>(기본적으로 라즈비안엔 ssh가 설치되어있어 별다른 과정 없이 ssh를 이용할 수 있습니다.)</p>
+<h3 id="apt-get-업데이트-및-업그레이드"><a href="#apt-get-업데이트-및-업그레이드" class="headerlink" title="apt-get 업데이트 및 업그레이드"></a>apt-get 업데이트 및 업그레이드</h3><p>다음 명령어를 통해 데비안 계열 리눅스의 패키지 관리툴인 apt-get의 인덱스 정보를 업데이트하고, 설치된 패키지들을 새 버전으로 업그레이드합니다.<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">$ sudo apt-get update</div><div class="line">$ sudo apt-get upgrade</div></pre></td></tr></table></figure></p>
+<h3 id="자주-쓰는-패키지들-설치"><a href="#자주-쓰는-패키지들-설치" class="headerlink" title="자주 쓰는 패키지들 설치"></a>자주 쓰는 패키지들 설치</h3><p>자주 쓰는 패키지들을 설치합니다. 저는 일단 vim, nmap, tree, bash-completion 을 설치했습니다.<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ sudo apt-get install -y vim namp tree bash-completion</div></pre></td></tr></table></figure></p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;나중에 필요할 때 참고할 수 있도록 라즈베리파이(이하 산딸기)를 사용하는 흔적들을 남기려 합니다.&lt;br&gt;주로 무언가 설치하거나 설정하는 방법들에 대해서 기록할 것입니다.&lt;br&gt;
+    
+    </summary>
+    
+      <category term="Raspberrypi" scheme="http://blog.lattecom.xyz/categories/raspberrypi/"/>
+    
+    
+      <category term="raspberrypi" scheme="http://blog.lattecom.xyz/tags/raspberrypi/"/>
+    
+      <category term="라즈베리파이" scheme="http://blog.lattecom.xyz/tags/%EB%9D%BC%EC%A6%88%EB%B2%A0%EB%A6%AC%ED%8C%8C%EC%9D%B4/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>express 모듈로 nodejs app 자동 생성하기</title>
+    <link href="http://blog.lattecom.xyz/2015/12/18/express-generator/"/>
+    <id>http://blog.lattecom.xyz/2015/12/18/express-generator/</id>
+    <published>2015-12-17T15:47:56.000Z</published>
+    <updated>2016-08-23T12:44:49.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>nodejs를 공부하던 중 책에서 다음과 같은 명령어로 app을 자동 생성하는 부분을 보았습니다.</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ express --session --ejs --css stylus myapp</div></pre></td></tr></table></figure>
+<a id="more"></a>
+<p>express 모듈을 -g 옵션을 주어 글로벌로 설치한 후에 위와 같이 하면 app이 자동으로 생성된다는데 아무리 해봐도 express command가 없다고만 나옵니다.<br>구글링으로 찾아보니 ‘express-generator’ 모듈을 설치해야 커맨드창에서 express 커맨드를 사용할 수 있다고 합니다.<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ npm install -g express-generator</div></pre></td></tr></table></figure></p>
+<p>위와 같이 글로벌로 설치 후에 책에 있는 예제대로 실행하면 자동으로 nodejs app이 생성되는 것을 확인할 수 있습니다.</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;nodejs를 공부하던 중 책에서 다음과 같은 명령어로 app을 자동 생성하는 부분을 보았습니다.&lt;/p&gt;
+&lt;figure class=&quot;highlight bash&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;1&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;$ express --session --ejs --css stylus myapp&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+    
+    </summary>
+    
+      <category term="Dev" scheme="http://blog.lattecom.xyz/categories/dev/"/>
+    
+      <category term="NodeJS" scheme="http://blog.lattecom.xyz/categories/dev/nodejs/"/>
+    
+    
+      <category term="express" scheme="http://blog.lattecom.xyz/tags/express/"/>
+    
+      <category term="node" scheme="http://blog.lattecom.xyz/tags/node/"/>
+    
+      <category term="nodejs" scheme="http://blog.lattecom.xyz/tags/nodejs/"/>
+    
+  </entry>
+  
+</feed>
